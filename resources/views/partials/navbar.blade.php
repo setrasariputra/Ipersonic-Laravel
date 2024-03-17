@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
     <div class="container">
         <div>
-            <a class="navbar-brand" href="#">iPersonic</a>
-            <a href="#" class="btn btn-sm btn-primary">Mulai Test <i class="bi bi-caret-right-fill"></i></a>
+            <a class="navbar-brand" href="{{ url('/') }}">iPersonic</a>
+            <a href="{{ url('/quiz') }}" class="btn btn-sm btn-primary">Mulai Test <i class="bi bi-caret-right-fill"></i></a>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
