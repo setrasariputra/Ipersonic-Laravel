@@ -3,7 +3,7 @@
     @include('partials.navbar')
     <main class="pt-4 pb-4">
         <div class="container">
-            <h1 class="display-6">Tes Kepribadian</h1>
+            <h1 class="display-6"><strong>Tes Kepribadian</strong></h1>
             <hr />
             <div>
                 <ul class="list-inline">
