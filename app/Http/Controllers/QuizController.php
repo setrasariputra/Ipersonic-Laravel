@@ -16,6 +16,12 @@ class QuizController extends Controller
         $this->quizService = $quizService;
     }
 
+    public function welcome() {
+        $defineResult = $this->quizService->defineResult();
+
+        return view('welcome', ['defineResult' => $defineResult]);
+    }
+
     public function showQuiz($step = null)
     {
         $validStep = $this->quizService->checkValidStep($step);
@@ -24,10 +30,11 @@ class QuizController extends Controller
         }
 
         $defineQuiz = $this->quizService->defineQuiz();
+        $defineResult = $this->quizService->defineResult();
         $accumulate = '';
         $nextStep = $this->quizService->getNextStep($step);
 
-        return view('quiz', ['defineQuiz' => $defineQuiz, 'step' => $step, 'nextStep' => $nextStep, 'accumulate' => $accumulate]);
+        return view('quiz', ['defineQuiz' => $defineQuiz, 'defineResult' => $defineResult, 'step' => $step, 'nextStep' => $nextStep, 'accumulate' => $accumulate]);
     }
 
     public function postQuiz(PostQuizRequest $request, $step)
@@ -54,8 +61,9 @@ class QuizController extends Controller
         }
 
         $defineQuiz = $this->quizService->defineQuiz();
+        $defineResult = $this->quizService->defineResult();
 
-        return view('quiz', ['defineQuiz' => $defineQuiz, 'step' => $step, 'nextStep' => $nextStep, 'accumulate' => $accumulate]);
+        return view('quiz', ['defineQuiz' => $defineQuiz, 'defineResult' => $defineResult, 'step' => $step, 'nextStep' => $nextStep, 'accumulate' => $accumulate]);
     }
 
     public function resultQuiz($slug) {
@@ -64,7 +72,9 @@ class QuizController extends Controller
             return Redirect::to('/quiz/step-1');
         }
 
+        $defineResult = $this->quizService->defineResult();
+
         $getResult = $this->quizService->getResult($slug);
-        return view('result', ['slug' => $slug, 'result' => $getResult]);
+        return view('result', ['slug' => $slug, 'defineResult' => $defineResult, 'result' => $getResult]);
     }
 }
