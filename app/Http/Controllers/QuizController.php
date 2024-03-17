@@ -44,12 +44,27 @@ class QuizController extends Controller
         $accumulate = $postQuiz['accumulate'];
 
         if($step === 'final') {
-            $result = $this->quizService->getFinalResul($accumulate);
-            return Redirect::to('/result/'.$result);
+            $result = $this->quizService->getFinalResult($accumulate);
+            if($result) {
+                $slug = $result['slug'];
+                return Redirect::to('/result/'.$slug);
+            }else{
+                return Redirect::to('/quiz/step-1');
+            }
         }
 
         $defineQuiz = $this->quizService->defineQuiz();
 
         return view('quiz', ['defineQuiz' => $defineQuiz, 'step' => $step, 'nextStep' => $nextStep, 'accumulate' => $accumulate]);
+    }
+
+    public function resultQuiz($slug) {
+        $validSlug = $this->quizService->checkValidSlugResult($slug);
+        if ($validSlug === false) {
+            return Redirect::to('/quiz/step-1');
+        }
+
+        $getResult = $this->quizService->getResult($slug);
+        return view('result', ['slug' => $slug, 'result' => $getResult]);
     }
 }
