@@ -16,22 +16,11 @@
                         Tipe Kepribadian
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Idealis Penyelaras</a></li>
-                        <li><a class="dropdown-item" href="#">Idealis Terlibat</a></li>
-                        <li><a class="dropdown-item" href="#">Pemikir Dinamis</a></li>
-                        <li><a class="dropdown-item" href="#">Pemikir Pendobrak</a></li>
-                        <li><a class="dropdown-item" href="#">Idealis Spontan</a></li>
-                        <li><a class="dropdown-item" href="#">Pelaku Santai</a></li>
-                        <li><a class="dropdown-item" href="#">Realis Sosialis</a></li>
-                        <li><a class="dropdown-item" href="#">Realis Bertekad</a></li>
-                        <li><a class="dropdown-item" href="#">Pelaku Bersemangat</a></li>
-                        <li><a class="dropdown-item" href="#">Pelaku Individualis</a></li>
-                        <li><a class="dropdown-item" href="#">Pelaku Peka</a></li>
-                        <li><a class="dropdown-item" href="#">Realis Baik Hati</a></li>
-                        <li><a class="dropdown-item" href="#">Realis Terpercaya</a></li>
-                        <li><a class="dropdown-item" href="#">Pemikir Mandiri</a></li>
-                        <li><a class="dropdown-item" href="#">Pemikir Analitis</a></li>
-                        <li><a class="dropdown-item" href="#">Idealis Pemimpi</a></li>
+                        @if(isset($defineResult))
+                            @foreach ($defineResult as $key)
+                                <li><a class="dropdown-item" href="{{ url('result/'.$key['slug']) }}">{{ $key['label'] }}</a></li>
+                            @endforeach
+                        @endif
                     </ul>
                 </li>
             </ul>

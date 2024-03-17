@@ -1,7 +1,7 @@
 @include('partials.head')
 
 <body>
-    @include('partials.navbar')
+    @include('partials.navbar', ['defineResult' => $defineResult])
     <main class="pt-4 pb-4 bg-primary-subtle">
         <div class="container">
             <div class="row">

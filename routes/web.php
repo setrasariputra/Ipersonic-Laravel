@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [QuizController::class, 'welcome']);
 Route::get('/quiz/{step?}', [QuizController::class, 'showQuiz']);
 Route::post('/quiz/{step?}', [QuizController::class, 'postQuiz']);
 Route::get('/result/{slug}', [QuizController::class, 'resultQuiz']);
